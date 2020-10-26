@@ -6,19 +6,33 @@ namespace HashsetsAndBinaryTree
     {
         static void Main(string[] args)
         {
-            MyMapNode<string, string> mapNode = new MyMapNode<string, string>(5);
-            Console.WriteLine("Adding KeyValue pair");
-            mapNode.Add("0", "To");
-            mapNode.Add("1", "be");
-            mapNode.Add("2", "or");
-            mapNode.Add("3", "not");
-            mapNode.Add("4", "to");
-            mapNode.Add("5", "be");
-            Console.WriteLine("Getting the value of index 1: " + mapNode.Get("1"));
-            Console.WriteLine("Getting the value of index 4: " + mapNode.Get("4"));
-            mapNode.GetFrequencyOf("to");
+            Console.WriteLine("Enter the phrase:");
+            string phrase = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+            string[] splitPhrase = phrase.Split(' ');
+            MyMapNode<string, string> mapNode = new MyMapNode<string, string>(splitPhrase.Length);
+            AddSplitPhraseIntoMap(splitPhrase, mapNode);
+            Console.WriteLine("Frequency before removal:");
+            mapNode.GetFrequencyOf("paranoid");
+            mapNode.Remove("paranoid");
+            Console.WriteLine("Frequency after removal:");
+            mapNode.GetFrequencyOf("paranoid");
+            mapNode.Display();
             Console.ReadLine();
+        }
 
+        /// <summary>
+        /// UC 2 : Adds the splitPhrase into the map.
+        /// </summary>
+        /// <param name="splitPhrase">The split phrase.</param>
+        /// <param name="mapNode">The map node.</param>
+        public static void AddSplitPhraseIntoMap(string[] splitPhrase, MyMapNode<string, string> mapNode)
+        {
+            Console.WriteLine("Adding KeyValue pair");
+            for (int i = 0; i < splitPhrase.Length; i++)
+            {
+                mapNode.Add($"{i}", splitPhrase[i]);
+            }
         }
     }
 }
+       
