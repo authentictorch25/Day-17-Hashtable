@@ -6,14 +6,17 @@ namespace HashsetsAndBinaryTree
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter the phrase");
+            Console.WriteLine("Enter the phrase:");
             string phrase = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
             string[] splitPhrase = phrase.Split(' ');
             MyMapNode<string, string> mapNode = new MyMapNode<string, string>(splitPhrase.Length);
             AddSplitPhraseIntoMap(splitPhrase, mapNode);
-            Console.WriteLine("Getting the value of index 1: " + mapNode.Get("1"));
-            Console.WriteLine("Getting the value of index 4: " + mapNode.Get("4"));
+            Console.WriteLine("Frequency before removal:");
             mapNode.GetFrequencyOf("paranoid");
+            mapNode.Remove("paranoid");
+            Console.WriteLine("Frequency after removal:");
+            mapNode.GetFrequencyOf("paranoid");
+            mapNode.Display();
             Console.ReadLine();
         }
 
@@ -32,3 +35,4 @@ namespace HashsetsAndBinaryTree
         }
     }
 }
+       
